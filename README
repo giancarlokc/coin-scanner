@@ -1,0 +1,14 @@
+Authors:
+    Giancarlo Klemm Camilo
+    Walker Andre Schwartz
+
+Description:
+    Project developed for the image processing course (CI394) at UFPR - Federal University of Parana.
+    The main goal was to develop an algorithm, using the ITK library, to scan and detect the values of Brazilian coins.
+    Coins currently supported: 1(real), 50(centavos), 25(centavos), 10(centavos), 5(centavos).
+    
+Compile:
+    Simply use the command 'make'
+    
+Run:
+    ./coinScanner [IMAGE_PATH]
