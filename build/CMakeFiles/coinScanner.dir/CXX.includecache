@@ -6,23 +6,27 @@
 
 #IncludeRegexTransform: 
 
-/home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/trabalho.cxx
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/coinScanner.cxx
 itkImage.h
-/home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/itkImage.h
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkImage.h
 itkBinaryMorphologicalClosingImageFilter.h
-/home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/itkBinaryMorphologicalClosingImageFilter.h
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkBinaryMorphologicalClosingImageFilter.h
 itkBinaryThresholdImageFilter.h
-/home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/itkBinaryThresholdImageFilter.h
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkBinaryThresholdImageFilter.h
 itkImageFileReader.h
-/home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/itkImageFileReader.h
-itkBinaryBallStructuringElement.h
-/home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/itkBinaryBallStructuringElement.h
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkImageFileReader.h
+itkBinaryCrossStructuringElement.h
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkBinaryCrossStructuringElement.h
 itkImageFileWriter.h
-/home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/itkImageFileWriter.h
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkImageFileWriter.h
 itkImageRegionIterator.h
-/home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/itkImageRegionIterator.h
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkImageRegionIterator.h
 itkBinaryImageToLabelMapFilter.h
-/home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/itkBinaryImageToLabelMapFilter.h
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkBinaryImageToLabelMapFilter.h
+itkInvertIntensityImageFilter.h
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkInvertIntensityImageFilter.h
+iostream
+-
 stdio.h
 -
 
@@ -298,15 +302,15 @@ itkNumericTraitsArrayPixel.h
 itkConditionVariable.h
 /usr/include/ITK-4.5/itkConditionVariable.h
 
-/usr/include/ITK-4.5/itkBinaryBallStructuringElement.h
+/usr/include/ITK-4.5/itkBinaryCrossStructuringElement.h
 itkNeighborhood.h
 /usr/include/ITK-4.5/itkNeighborhood.h
-itkBinaryBallStructuringElement.hxx
-/usr/include/ITK-4.5/itkBinaryBallStructuringElement.hxx
+itkBinaryCrossStructuringElement.hxx
+/usr/include/ITK-4.5/itkBinaryCrossStructuringElement.hxx
 
-/usr/include/ITK-4.5/itkBinaryBallStructuringElement.hxx
-itkBinaryBallStructuringElement.h
-/usr/include/ITK-4.5/itkBinaryBallStructuringElement.h
+/usr/include/ITK-4.5/itkBinaryCrossStructuringElement.hxx
+itkBinaryCrossStructuringElement.h
+/usr/include/ITK-4.5/itkBinaryCrossStructuringElement.h
 itkFlatStructuringElement.h
 /usr/include/ITK-4.5/itkFlatStructuringElement.h
 
@@ -1428,6 +1432,18 @@ itkInteriorExteriorSpatialFunction.hxx
 itkInteriorExteriorSpatialFunction.h
 /usr/include/ITK-4.5/itkInteriorExteriorSpatialFunction.h
 
+/usr/include/ITK-4.5/itkInvertIntensityImageFilter.h
+itkUnaryFunctorImageFilter.h
+/usr/include/ITK-4.5/itkUnaryFunctorImageFilter.h
+itkInvertIntensityImageFilter.hxx
+/usr/include/ITK-4.5/itkInvertIntensityImageFilter.hxx
+
+/usr/include/ITK-4.5/itkInvertIntensityImageFilter.hxx
+itkInvertIntensityImageFilter.h
+/usr/include/ITK-4.5/itkInvertIntensityImageFilter.h
+itkMinimumMaximumImageCalculator.h
+/usr/include/ITK-4.5/itkMinimumMaximumImageCalculator.h
+
 /usr/include/ITK-4.5/itkIsSame.h
 
 /usr/include/ITK-4.5/itkKernelImageFilter.h
@@ -1607,6 +1623,22 @@ typeinfo
 -
 iostream
 -
+
+/usr/include/ITK-4.5/itkMinimumMaximumImageCalculator.h
+itkObject.h
+/usr/include/ITK-4.5/itkObject.h
+itkObjectFactory.h
+/usr/include/ITK-4.5/itkObjectFactory.h
+itkMinimumMaximumImageCalculator.hxx
+/usr/include/ITK-4.5/itkMinimumMaximumImageCalculator.hxx
+
+/usr/include/ITK-4.5/itkMinimumMaximumImageCalculator.hxx
+itkMinimumMaximumImageCalculator.h
+/usr/include/ITK-4.5/itkMinimumMaximumImageCalculator.h
+itkImageRegionConstIteratorWithIndex.h
+/usr/include/ITK-4.5/itkImageRegionConstIteratorWithIndex.h
+itkNumericTraits.h
+/usr/include/ITK-4.5/itkNumericTraits.h
 
 /usr/include/ITK-4.5/itkMultiThreader.h
 itkMutexLock.h

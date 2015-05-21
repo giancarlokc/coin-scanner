@@ -50,44 +50,44 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1
+CMAKE_SOURCE_DIR = /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/build
+CMAKE_BINARY_DIR = /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/trabalho.dir
+# Target rules for target CMakeFiles/coinScanner.dir
 
 # All Build rule for target.
-CMakeFiles/trabalho.dir/all:
-	$(MAKE) -f CMakeFiles/trabalho.dir/build.make CMakeFiles/trabalho.dir/depend
-	$(MAKE) -f CMakeFiles/trabalho.dir/build.make CMakeFiles/trabalho.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/build/CMakeFiles  1
-	@echo "Built target trabalho"
-.PHONY : CMakeFiles/trabalho.dir/all
+CMakeFiles/coinScanner.dir/all:
+	$(MAKE) -f CMakeFiles/coinScanner.dir/build.make CMakeFiles/coinScanner.dir/depend
+	$(MAKE) -f CMakeFiles/coinScanner.dir/build.make CMakeFiles/coinScanner.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/build/CMakeFiles  1
+	@echo "Built target coinScanner"
+.PHONY : CMakeFiles/coinScanner.dir/all
 
 # Include target in all.
-all: CMakeFiles/trabalho.dir/all
+all: CMakeFiles/coinScanner.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/trabalho.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/build/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/trabalho.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/build/CMakeFiles 0
-.PHONY : CMakeFiles/trabalho.dir/rule
+CMakeFiles/coinScanner.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/coinScanner.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/build/CMakeFiles 0
+.PHONY : CMakeFiles/coinScanner.dir/rule
 
 # Convenience name for target.
-trabalho: CMakeFiles/trabalho.dir/rule
-.PHONY : trabalho
+coinScanner: CMakeFiles/coinScanner.dir/rule
+.PHONY : coinScanner
 
 # clean rule for target.
-CMakeFiles/trabalho.dir/clean:
-	$(MAKE) -f CMakeFiles/trabalho.dir/build.make CMakeFiles/trabalho.dir/clean
-.PHONY : CMakeFiles/trabalho.dir/clean
+CMakeFiles/coinScanner.dir/clean:
+	$(MAKE) -f CMakeFiles/coinScanner.dir/build.make CMakeFiles/coinScanner.dir/clean
+.PHONY : CMakeFiles/coinScanner.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/trabalho.dir/clean
+clean: CMakeFiles/coinScanner.dir/clean
 .PHONY : clean
 
 #=============================================================================

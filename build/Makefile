@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1
+CMAKE_SOURCE_DIR = /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/build
+CMAKE_BINARY_DIR = /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,9 +72,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/build/CMakeFiles /home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/build/CMakeFiles /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -102,41 +102,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named trabalho
+# Target rules for targets named coinScanner
 
 # Build rule for target.
-trabalho: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 trabalho
-.PHONY : trabalho
+coinScanner: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 coinScanner
+.PHONY : coinScanner
 
 # fast build rule for target.
-trabalho/fast:
-	$(MAKE) -f CMakeFiles/trabalho.dir/build.make CMakeFiles/trabalho.dir/build
-.PHONY : trabalho/fast
+coinScanner/fast:
+	$(MAKE) -f CMakeFiles/coinScanner.dir/build.make CMakeFiles/coinScanner.dir/build
+.PHONY : coinScanner/fast
 
-trabalho.o: trabalho.cxx.o
-.PHONY : trabalho.o
+coinScanner.o: coinScanner.cxx.o
+.PHONY : coinScanner.o
 
 # target to build an object file
-trabalho.cxx.o:
-	$(MAKE) -f CMakeFiles/trabalho.dir/build.make CMakeFiles/trabalho.dir/trabalho.cxx.o
-.PHONY : trabalho.cxx.o
+coinScanner.cxx.o:
+	$(MAKE) -f CMakeFiles/coinScanner.dir/build.make CMakeFiles/coinScanner.dir/coinScanner.cxx.o
+.PHONY : coinScanner.cxx.o
 
-trabalho.i: trabalho.cxx.i
-.PHONY : trabalho.i
+coinScanner.i: coinScanner.cxx.i
+.PHONY : coinScanner.i
 
 # target to preprocess a source file
-trabalho.cxx.i:
-	$(MAKE) -f CMakeFiles/trabalho.dir/build.make CMakeFiles/trabalho.dir/trabalho.cxx.i
-.PHONY : trabalho.cxx.i
+coinScanner.cxx.i:
+	$(MAKE) -f CMakeFiles/coinScanner.dir/build.make CMakeFiles/coinScanner.dir/coinScanner.cxx.i
+.PHONY : coinScanner.cxx.i
 
-trabalho.s: trabalho.cxx.s
-.PHONY : trabalho.s
+coinScanner.s: coinScanner.cxx.s
+.PHONY : coinScanner.s
 
 # target to generate assembly for a file
-trabalho.cxx.s:
-	$(MAKE) -f CMakeFiles/trabalho.dir/build.make CMakeFiles/trabalho.dir/trabalho.cxx.s
-.PHONY : trabalho.cxx.s
+coinScanner.cxx.s:
+	$(MAKE) -f CMakeFiles/coinScanner.dir/build.make CMakeFiles/coinScanner.dir/coinScanner.cxx.s
+.PHONY : coinScanner.cxx.s
 
 # Help Target
 help:
@@ -144,12 +144,12 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... coinScanner"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... trabalho"
-	@echo "... trabalho.o"
-	@echo "... trabalho.i"
-	@echo "... trabalho.s"
+	@echo "... coinScanner.o"
+	@echo "... coinScanner.i"
+	@echo "... coinScanner.s"
 .PHONY : help
 
 

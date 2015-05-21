@@ -8,7 +8,17 @@ Description:
     Coins currently supported: 1(real), 50(centavos), 25(centavos), 10(centavos), 5(centavos).
     
 Compile:
-    Simply use the command 'make'
+    From inside the '/build' directory run:
+    
+        rm -r *
+    
+    Then use:
+    
+        ccmake ..
+    
+    After configuring (shortcut 'c') and generating (shortcut 'g') use:
+    
+        make
     
 Run:
     ./coinScanner [IMAGE_PATH]

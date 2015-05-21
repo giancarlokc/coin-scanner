@@ -1,1 +1,1 @@
-/home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/build/CMakeFiles/trabalho.dir
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/build/CMakeFiles/coinScanner.dir

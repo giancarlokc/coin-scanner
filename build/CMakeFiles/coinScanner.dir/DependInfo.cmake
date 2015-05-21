@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/trabalho.cxx" "/home/bcc/gkc11/Documentos/ProcessamentoImagens2015/trabalho1/build/CMakeFiles/trabalho.dir/trabalho.cxx.o"
+  "/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/coinScanner.cxx" "/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/build/CMakeFiles/coinScanner.dir/coinScanner.cxx.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
