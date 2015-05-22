@@ -9,6 +9,7 @@
 #include "itkImageRegionIterator.h"
 #include "itkBinaryImageToLabelMapFilter.h"
 #include "itkInvertIntensityImageFilter.h"
+#include "itkBinaryImageToShapeLabelMapFilter.h"
 #include <iostream>
 #include <stdio.h>
 
@@ -41,6 +42,7 @@ typedef itk::BinaryCrossStructuringElement<ImageType::PixelType, ImageType::Imag
 typedef itk::BinaryMorphologicalClosingImageFilter <ImageType, ImageType, StructuringElementType> BinaryMorphologicalClosingImageFilterType;
 typedef itk::InvertIntensityImageFilter <ImageType> InvertIntensityImageFilterType;
 typedef itk::BinaryImageToLabelMapFilter<ImageType> BinaryImageToLabelMapFilterType;
+typedef itk::BinaryImageToShapeLabelMapFilter<ImageType> BinaryImageToShapeLabelMapFilterType;
 
 /* @FUNCTIONS    */
 
@@ -108,6 +110,16 @@ BinaryImageToLabelMapFilterType::Pointer getLabelMap(ImageType::Pointer src) {
     return binaryImageToLabelMapFilter;
 }
 
+BinaryImageToShapeLabelMapFilterType::Pointer getShapeLabelMap(ImageType::Pointer src) {
+    printf("> Creating ShapeLabelMap... ");
+    BinaryImageToShapeLabelMapFilterType::Pointer binaryImageToShapeLabelMapFilter = BinaryImageToShapeLabelMapFilterType::New();
+    binaryImageToShapeLabelMapFilter->SetInput(src);
+    binaryImageToShapeLabelMapFilter->Update();
+    printf("[DONE]\n");
+    
+    return binaryImageToShapeLabelMapFilter;
+}
+
 /* Comparison using an error margin */
 bool compare(long int size, long int compareValue){ 
     if(size < (compareValue + compareValue*MARGEM_ERRO) && size > (compareValue - compareValue*MARGEM_ERRO)) {
@@ -154,6 +166,8 @@ int main(int argc, char *argv[]){
     
     /* Read input file */
     ReaderType::Pointer reader = readFromFile(argv[1]);
+    
+    ImageType::Pointer image = reader->GetOutput();
  
     /* Use a threshold filter to create a binary image */
     BinaryThresholdImageFilterType::Pointer thresholdFilter  = applyThresholdFilter(reader->GetOutput(), 10, 100, 255, 0);
@@ -176,6 +190,30 @@ int main(int argc, char *argv[]){
         // Check if the object size matches any coin
         printf("Object %10d - Size: %20ld - Type: %20s\n", i+1, labelObject->Size(), findCoinType(labelObject->Size()));
     }
+    
+    /*BinaryImageToShapeLabelMapFilterType::Pointer binaryImageToShapeLabelMapFilter = getShapeLabelMap(invertIntensityFilter->GetOutput());
+    for(unsigned int i = 0; i < binaryImageToShapeLabelMapFilter->GetOutput()->GetNumberOfLabelObjects(); i++)
+    {
+        BinaryImageToShapeLabelMapFilterType::OutputImageType::LabelObjectType* labelObject = binaryImageToShapeLabelMapFilter->GetOutput()->GetNthLabelObject(i);
+        // Output the bounding box (an example of one possible property) of the ith region
+        std::cout << "Object " << i << " has bounding box " << labelObject->GetBoundingBox().GetSize()[0]  << std::endl;
+        
+        for(unsigned int r = 0; r < labelObject->GetBoundingBox().GetSize()[0]; r++){
+            for(unsigned int c = 0; c < labelObject->GetBoundingBox().GetSize()[1]; c++){
+              ImageType::IndexType pixelIndex;
+              pixelIndex[0] = labelObject->GetBoundingBox().GetIndex()[0] + r;
+              pixelIndex[1] = labelObject->GetBoundingBox().GetIndex()[1] + c;
+
+              image->SetPixel(pixelIndex, 0);
+            }
+        }
+    }*/
+    
+    //typedef  itk::ImageFileWriter< ImageType  > WriterType;
+    //WriterType::Pointer writer = WriterType::New();
+    //writer->SetFileName("output.png");
+    //writer->SetInput(image);
+    //writer->Update();
 
     return EXIT_SUCCESS;
 }   

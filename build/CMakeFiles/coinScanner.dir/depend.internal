@@ -54,8 +54,12 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o
  /usr/include/ITK-4.5/iso/vcl_iosfwd.h
  /usr/include/ITK-4.5/iso/vcl_iostream.h
  /usr/include/ITK-4.5/iso/vcl_limits.h
+ /usr/include/ITK-4.5/itkAffineTransform.h
+ /usr/include/ITK-4.5/itkAffineTransform.hxx
  /usr/include/ITK-4.5/itkArray.h
  /usr/include/ITK-4.5/itkArray.hxx
+ /usr/include/ITK-4.5/itkArray2D.h
+ /usr/include/ITK-4.5/itkArray2D.hxx
  /usr/include/ITK-4.5/itkBarrier.h
  /usr/include/ITK-4.5/itkBinaryCrossStructuringElement.h
  /usr/include/ITK-4.5/itkBinaryCrossStructuringElement.hxx
@@ -65,6 +69,8 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o
  /usr/include/ITK-4.5/itkBinaryErodeImageFilter.hxx
  /usr/include/ITK-4.5/itkBinaryImageToLabelMapFilter.h
  /usr/include/ITK-4.5/itkBinaryImageToLabelMapFilter.hxx
+ /usr/include/ITK-4.5/itkBinaryImageToShapeLabelMapFilter.h
+ /usr/include/ITK-4.5/itkBinaryImageToShapeLabelMapFilter.hxx
  /usr/include/ITK-4.5/itkBinaryMorphologicalClosingImageFilter.h
  /usr/include/ITK-4.5/itkBinaryMorphologicalClosingImageFilter.hxx
  /usr/include/ITK-4.5/itkBinaryMorphologyImageFilter.h
@@ -101,6 +107,7 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o
  /usr/include/ITK-4.5/itkCreateObjectFunction.h
  /usr/include/ITK-4.5/itkCropImageFilter.h
  /usr/include/ITK-4.5/itkCropImageFilter.hxx
+ /usr/include/ITK-4.5/itkCrossHelper.h
  /usr/include/ITK-4.5/itkDataObject.h
  /usr/include/ITK-4.5/itkDataObjectIterator.h
  /usr/include/ITK-4.5/itkDefaultConvertPixelTraits.h
@@ -131,6 +138,7 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o
  /usr/include/ITK-4.5/itkFloodFilledSpatialFunctionConditionalConstIterator.hxx
  /usr/include/ITK-4.5/itkFloodFilledSpatialFunctionConditionalIterator.h
  /usr/include/ITK-4.5/itkFunctionBase.h
+ /usr/include/ITK-4.5/itkGeometryUtilities.h
  /usr/include/ITK-4.5/itkIOConfigure.h
  /usr/include/ITK-4.5/itkImage.h
  /usr/include/ITK-4.5/itkImage.hxx
@@ -186,6 +194,8 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o
  /usr/include/ITK-4.5/itkImportImageContainer.hxx
  /usr/include/ITK-4.5/itkInPlaceImageFilter.h
  /usr/include/ITK-4.5/itkInPlaceImageFilter.hxx
+ /usr/include/ITK-4.5/itkInPlaceLabelMapFilter.h
+ /usr/include/ITK-4.5/itkInPlaceLabelMapFilter.hxx
  /usr/include/ITK-4.5/itkIndent.h
  /usr/include/ITK-4.5/itkIndex.h
  /usr/include/ITK-4.5/itkInputDataObjectIterator.h
@@ -199,6 +209,10 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o
  /usr/include/ITK-4.5/itkKernelImageFilter.hxx
  /usr/include/ITK-4.5/itkLabelMap.h
  /usr/include/ITK-4.5/itkLabelMap.hxx
+ /usr/include/ITK-4.5/itkLabelMapFilter.h
+ /usr/include/ITK-4.5/itkLabelMapFilter.hxx
+ /usr/include/ITK-4.5/itkLabelMapToLabelImageFilter.h
+ /usr/include/ITK-4.5/itkLabelMapToLabelImageFilter.hxx
  /usr/include/ITK-4.5/itkLabelObject.h
  /usr/include/ITK-4.5/itkLabelObject.hxx
  /usr/include/ITK-4.5/itkLabelObjectLine.h
@@ -211,12 +225,15 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o
  /usr/include/ITK-4.5/itkMathDetail.h
  /usr/include/ITK-4.5/itkMatrix.h
  /usr/include/ITK-4.5/itkMatrix.hxx
+ /usr/include/ITK-4.5/itkMatrixOffsetTransformBase.h
+ /usr/include/ITK-4.5/itkMatrixOffsetTransformBase.hxx
  /usr/include/ITK-4.5/itkMetaDataDictionary.h
  /usr/include/ITK-4.5/itkMetaDataObjectBase.h
  /usr/include/ITK-4.5/itkMinimumMaximumImageCalculator.h
  /usr/include/ITK-4.5/itkMinimumMaximumImageCalculator.hxx
  /usr/include/ITK-4.5/itkMultiThreader.h
  /usr/include/ITK-4.5/itkMutexLock.h
+ /usr/include/ITK-4.5/itkMutexLockHolder.h
  /usr/include/ITK-4.5/itkNeighborhood.h
  /usr/include/ITK-4.5/itkNeighborhood.hxx
  /usr/include/ITK-4.5/itkNeighborhoodAccessorFunctor.h
@@ -244,6 +261,9 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o
  /usr/include/ITK-4.5/itkObjectFactory.h
  /usr/include/ITK-4.5/itkObjectFactoryBase.h
  /usr/include/ITK-4.5/itkOffset.h
+ /usr/include/ITK-4.5/itkOptimizerParameters.h
+ /usr/include/ITK-4.5/itkOptimizerParameters.hxx
+ /usr/include/ITK-4.5/itkOptimizerParametersHelper.h
  /usr/include/ITK-4.5/itkOutputDataObjectIterator.h
  /usr/include/ITK-4.5/itkPadImageFilter.h
  /usr/include/ITK-4.5/itkPadImageFilter.hxx
@@ -260,6 +280,9 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o
  /usr/include/ITK-4.5/itkRealTimeInterval.h
  /usr/include/ITK-4.5/itkRealTimeStamp.h
  /usr/include/ITK-4.5/itkRegion.h
+ /usr/include/ITK-4.5/itkShapeLabelMapFilter.h
+ /usr/include/ITK-4.5/itkShapeLabelMapFilter.hxx
+ /usr/include/ITK-4.5/itkShapeLabelObject.h
  /usr/include/ITK-4.5/itkShapedNeighborhoodIterator.h
  /usr/include/ITK-4.5/itkShapedNeighborhoodIterator.hxx
  /usr/include/ITK-4.5/itkSharedMorphologyUtilities.h
@@ -280,6 +303,9 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o
  /usr/include/ITK-4.5/itkSymmetricSecondRankTensor.hxx
  /usr/include/ITK-4.5/itkThreadSupport.h
  /usr/include/ITK-4.5/itkTimeStamp.h
+ /usr/include/ITK-4.5/itkTransform.h
+ /usr/include/ITK-4.5/itkTransform.hxx
+ /usr/include/ITK-4.5/itkTransformBase.h
  /usr/include/ITK-4.5/itkUnaryFunctorImageFilter.h
  /usr/include/ITK-4.5/itkUnaryFunctorImageFilter.hxx
  /usr/include/ITK-4.5/itkVanHerkGilWermanDilateImageFilter.h
@@ -347,7 +373,9 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o
  /usr/include/ITK-4.5/vcl_new.h
  /usr/include/ITK-4.5/vnl/algo/vnl_determinant.h
  /usr/include/ITK-4.5/vnl/algo/vnl_matrix_inverse.h
+ /usr/include/ITK-4.5/vnl/algo/vnl_real_eigensystem.h
  /usr/include/ITK-4.5/vnl/algo/vnl_svd.h
+ /usr/include/ITK-4.5/vnl/algo/vnl_symmetric_eigensystem.h
  /usr/include/ITK-4.5/vnl/dll.h
  /usr/include/ITK-4.5/vnl/vnl_c_vector.h
  /usr/include/ITK-4.5/vnl/vnl_config.h

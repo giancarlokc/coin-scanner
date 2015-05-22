@@ -53,8 +53,12 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/iso/vcl_fstre
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/iso/vcl_iosfwd.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/iso/vcl_iostream.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/iso/vcl_limits.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkAffineTransform.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkAffineTransform.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkArray.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkArray.hxx
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkArray2D.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkArray2D.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBarrier.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryCrossStructuringElement.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryCrossStructuringElement.hxx
@@ -64,6 +68,8 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryErod
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryErodeImageFilter.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryImageToLabelMapFilter.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryImageToLabelMapFilter.hxx
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryImageToShapeLabelMapFilter.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryImageToShapeLabelMapFilter.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryMorphologicalClosingImageFilter.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryMorphologicalClosingImageFilter.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryMorphologyImageFilter.h
@@ -100,6 +106,7 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkCovariantV
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkCreateObjectFunction.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkCropImageFilter.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkCropImageFilter.hxx
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkCrossHelper.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkDataObject.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkDataObjectIterator.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkDefaultConvertPixelTraits.h
@@ -130,6 +137,7 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkFloodFille
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkFloodFilledSpatialFunctionConditionalConstIterator.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkFloodFilledSpatialFunctionConditionalIterator.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkFunctionBase.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkGeometryUtilities.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkIOConfigure.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkImage.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkImage.hxx
@@ -185,6 +193,8 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkImportImag
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkImportImageContainer.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkInPlaceImageFilter.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkInPlaceImageFilter.hxx
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkInPlaceLabelMapFilter.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkInPlaceLabelMapFilter.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkIndent.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkIndex.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkInputDataObjectIterator.h
@@ -198,6 +208,10 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkKernelImag
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkKernelImageFilter.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkLabelMap.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkLabelMap.hxx
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkLabelMapFilter.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkLabelMapFilter.hxx
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkLabelMapToLabelImageFilter.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkLabelMapToLabelImageFilter.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkLabelObject.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkLabelObject.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkLabelObjectLine.h
@@ -210,12 +224,15 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkMath.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkMathDetail.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkMatrix.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkMatrix.hxx
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkMatrixOffsetTransformBase.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkMatrixOffsetTransformBase.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkMetaDataDictionary.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkMetaDataObjectBase.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkMinimumMaximumImageCalculator.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkMinimumMaximumImageCalculator.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkMultiThreader.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkMutexLock.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkMutexLockHolder.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkNeighborhood.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkNeighborhood.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkNeighborhoodAccessorFunctor.h
@@ -243,6 +260,9 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkObject.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkObjectFactory.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkObjectFactoryBase.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkOffset.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkOptimizerParameters.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkOptimizerParameters.hxx
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkOptimizerParametersHelper.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkOutputDataObjectIterator.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkPadImageFilter.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkPadImageFilter.hxx
@@ -259,6 +279,9 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkRGBPixel.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkRealTimeInterval.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkRealTimeStamp.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkRegion.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkShapeLabelMapFilter.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkShapeLabelMapFilter.hxx
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkShapeLabelObject.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkShapedNeighborhoodIterator.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkShapedNeighborhoodIterator.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkSharedMorphologyUtilities.h
@@ -279,6 +302,9 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkSymmetricS
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkSymmetricSecondRankTensor.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkThreadSupport.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkTimeStamp.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkTransform.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkTransform.hxx
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkTransformBase.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkUnaryFunctorImageFilter.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkUnaryFunctorImageFilter.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkVanHerkGilWermanDilateImageFilter.h
@@ -346,7 +372,9 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/vcl_limits.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/vcl_new.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/vnl/algo/vnl_determinant.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/vnl/algo/vnl_matrix_inverse.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/vnl/algo/vnl_real_eigensystem.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/vnl/algo/vnl_svd.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/vnl/algo/vnl_symmetric_eigensystem.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/vnl/dll.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/vnl/vnl_c_vector.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/vnl/vnl_config.h
