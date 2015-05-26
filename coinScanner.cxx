@@ -31,8 +31,22 @@
 #define MOEDA_5_CENT_PIXEL          0
 #define MOEDA_5_CENT_BRONZE_PIXEL   75000
 
+/* COIN LENGTH */
+#define MOEDA_1_REAL_LENGTH         390
+#define MOEDA_50_CENT_LENGTH        340
+#define MOEDA_25_CENT_LENGTH        360
+#define MOEDA_10_CENT_LENGTH        0
+#define MOEDA_10_CENT_GOLD_LENGTH   286
+#define MOEDA_5_CENT_LENGTH         0
+#define MOEDA_5_CENT_BRONZE_LENGTH  315
+
 /* ERROR MARGIN */
 #define MARGEM_ERRO 0.075
+
+/* OPTIONS */
+#define USE_LABELMAP 1
+#define USE_SHAPELABELMAP 1
+#define SHOW_ALL_OUTPUT 0
 
 /* ITK Definitions */
 typedef itk::Image<unsigned char, 2>  ImageType;
@@ -121,38 +135,89 @@ BinaryImageToShapeLabelMapFilterType::Pointer getShapeLabelMap(ImageType::Pointe
 }
 
 /* Comparison using an error margin */
-bool compare(long int size, long int compareValue){ 
+long int compare(long int size, long int compareValue){ 
     if(size < (compareValue + compareValue*MARGEM_ERRO) && size > (compareValue - compareValue*MARGEM_ERRO)) {
-        return true;
+        long int diff = size - compareValue;
+        if(diff < 0) {
+            diff *= -1;
+        }
+        if(diff == 0) {
+            diff = 1;
+        }
+        return diff;
     } else {
-        return false;
+        return 100000000;
     }
 }
   
 /* Compare a given pixel amount with the defined pixel amounts for each coin */
-char* findCoinType(long int size) {
-    if(compare(size, MOEDA_1_REAL_PIXEL)) {
-        return (char *) "1 REAL";
+char* findCoinTypeSize(long int size) {
+    long int closest = 100000000;
+    char* closest_string = NULL;
+    if(compare(size, MOEDA_1_REAL_PIXEL) < closest) {
+        closest = compare(size, MOEDA_1_REAL_PIXEL);
+        closest_string = (char *) "1 REAL";
     }
-    if(compare(size, MOEDA_50_CENT_PIXEL)) {
-        return (char *) "50 CENTAVOS";
+    if(compare(size, MOEDA_50_CENT_PIXEL) < closest) {
+        closest = compare(size, MOEDA_50_CENT_PIXEL);
+        closest_string = (char *) "50 CENTAVOS";
     }
-    if(compare(size, MOEDA_25_CENT_PIXEL)) {
-        return (char *) "25 CENTAVOS";
+    if(compare(size, MOEDA_25_CENT_PIXEL) < closest) {
+        closest = compare(size, MOEDA_25_CENT_PIXEL);
+        closest_string = (char *) "25 CENTAVOS";
     }
-    if(compare(size, MOEDA_10_CENT_PIXEL)) {
-        return (char *) "10 CENTAVOS";
+    if(compare(size, MOEDA_10_CENT_PIXEL) < closest) {
+        closest = compare(size, MOEDA_10_CENT_PIXEL);
+        closest_string = (char *) "10 CENTAVOS";
     }
-    if(compare(size, MOEDA_10_CENT_GOLD_PIXEL)) {
-        return (char *) "10 CENTAVOS GOLD";
+    if(compare(size, MOEDA_10_CENT_GOLD_PIXEL) < closest) {
+        closest = compare(size, MOEDA_10_CENT_GOLD_PIXEL);
+        closest_string = (char *) "10 CENTAVOS GOLD";
     }
-    if(compare(size, MOEDA_5_CENT_PIXEL)) {
-        return (char *) "5 CENTAVOS";
+    if(compare(size, MOEDA_5_CENT_PIXEL) < closest) {
+        closest = compare(size, MOEDA_5_CENT_PIXEL);
+        closest_string = (char *) "5 CENTAVOS";
     }
-    if(compare(size, MOEDA_5_CENT_BRONZE_PIXEL)) {
-        return (char *) "5 CENTAVOS BRONZE";
+    if(compare(size, MOEDA_5_CENT_BRONZE_PIXEL) < closest) {
+        closest = compare(size, MOEDA_5_CENT_BRONZE_PIXEL);
+        closest_string = (char *) "5 CENTAVOS BRONZE";
     }
-    return (char *) "INDEFINIDO";
+    return closest_string;
+}
+
+/* Compare a given length with the defined lengths for each coin */
+char* findCoinTypeLength(long int size) {
+    long int closest = 100000000;
+    char* closest_string = NULL;
+    if(compare(size, MOEDA_1_REAL_LENGTH) < closest) {
+        closest = compare(size, MOEDA_1_REAL_LENGTH);
+        closest_string = (char *) "1 REAL";
+    }
+    if(compare(size, MOEDA_50_CENT_LENGTH) < closest) {
+        closest = compare(size, MOEDA_50_CENT_LENGTH);
+        closest_string = (char *) "50 CENTAVOS";
+    }
+    if(compare(size, MOEDA_25_CENT_LENGTH) < closest) {
+        closest = compare(size, MOEDA_25_CENT_LENGTH);
+        closest_string = (char *) "25 CENTAVOS";
+    }
+    if(compare(size, MOEDA_10_CENT_LENGTH) < closest) {
+        closest = compare(size, MOEDA_10_CENT_LENGTH);
+        closest_string = (char *) "10 CENTAVOS";
+    }
+    if(compare(size, MOEDA_10_CENT_GOLD_LENGTH) < closest) {
+        closest = compare(size, MOEDA_10_CENT_GOLD_LENGTH);
+        closest_string = (char *) "10 CENTAVOS GOLD";
+    }
+    if(compare(size, MOEDA_5_CENT_LENGTH) < closest) {
+        closest = compare(size, MOEDA_5_CENT_LENGTH);
+        closest_string = (char *) "5 CENTAVOS";
+    }
+    if(compare(size, MOEDA_5_CENT_BRONZE_LENGTH) < closest) {
+        closest = compare(size, MOEDA_5_CENT_BRONZE_LENGTH);
+        closest_string = (char *) "5 CENTAVOS BRONZE";
+    }
+    return closest_string;
 }
 
 /* @MAIN */
@@ -178,36 +243,70 @@ int main(int argc, char *argv[]){
     /* Invert image */
     InvertIntensityImageFilterType::Pointer invertIntensityFilter = invertImage(closingFilter->GetOutput(), 255);
 
-    /* Apply an imagetoLabelMap filter to separate objects */
-    BinaryImageToLabelMapFilterType::Pointer binaryImageToLabelMapFilter = getLabelMap(invertIntensityFilter->GetOutput());
-
-    /* Loop over each region in the map */
-    for(unsigned int i = 0; i < binaryImageToLabelMapFilter->GetOutput()->GetNumberOfLabelObjects(); i++) {
-        // Get the ith region
-        BinaryImageToLabelMapFilterType::OutputImageType::LabelObjectType* labelObject = binaryImageToLabelMapFilter->GetOutput()->GetNthLabelObject(i);
-        labelObject->Optimize();
+    // Shape Label Map filter
+    if(USE_LABELMAP) {
+        /* Apply an imagetoLabelMap filter to separate objects */
+        BinaryImageToLabelMapFilterType::Pointer binaryImageToLabelMapFilter = getLabelMap(invertIntensityFilter->GetOutput());
+        printf("> Results: \n");
         
-        // Check if the object size matches any coin
-        printf("Object %10d - Size: %20ld - Type: %20s\n", i+1, labelObject->Size(), findCoinType(labelObject->Size()));
-    }
-    
-    /*BinaryImageToShapeLabelMapFilterType::Pointer binaryImageToShapeLabelMapFilter = getShapeLabelMap(invertIntensityFilter->GetOutput());
-    for(unsigned int i = 0; i < binaryImageToShapeLabelMapFilter->GetOutput()->GetNumberOfLabelObjects(); i++)
-    {
-        BinaryImageToShapeLabelMapFilterType::OutputImageType::LabelObjectType* labelObject = binaryImageToShapeLabelMapFilter->GetOutput()->GetNthLabelObject(i);
-        // Output the bounding box (an example of one possible property) of the ith region
-        std::cout << "Object " << i << " has bounding box " << labelObject->GetBoundingBox().GetSize()[0]  << std::endl;
-        
-        for(unsigned int r = 0; r < labelObject->GetBoundingBox().GetSize()[0]; r++){
-            for(unsigned int c = 0; c < labelObject->GetBoundingBox().GetSize()[1]; c++){
-              ImageType::IndexType pixelIndex;
-              pixelIndex[0] = labelObject->GetBoundingBox().GetIndex()[0] + r;
-              pixelIndex[1] = labelObject->GetBoundingBox().GetIndex()[1] + c;
-
-              image->SetPixel(pixelIndex, 0);
+        /* Loop over each region in the map */
+        for(unsigned int i = 0; i < binaryImageToLabelMapFilter->GetOutput()->GetNumberOfLabelObjects(); i++) {
+            // Get the ith region
+            BinaryImageToLabelMapFilterType::OutputImageType::LabelObjectType* labelObject = binaryImageToLabelMapFilter->GetOutput()->GetNthLabelObject(i);
+            labelObject->Optimize();
+            
+            // Check if the object size matches any coin
+            char* objectType;
+            objectType = findCoinTypeSize(labelObject->Size());
+            if(SHOW_ALL_OUTPUT) {
+                if(objectType == NULL) {
+                    objectType = (char*) "INDEFINIDO";
+                }
+                printf("   Object %10d - Size: %20ld - Type: %20s\n", i+1, labelObject->Size(), objectType);
+            } else {
+                if(objectType != NULL) {
+                    printf("   Object %10d - Size: %20ld - Type: %20s\n", i+1, labelObject->Size(), objectType);
+                }
             }
         }
-    }*/
+    }
+    
+    // Shape Label Map filter
+    if(USE_SHAPELABELMAP) {
+        /* Apply an imagetoShapeLabelMap filter to separate objects */
+        BinaryImageToShapeLabelMapFilterType::Pointer binaryImageToShapeLabelMapFilter = getShapeLabelMap(invertIntensityFilter->GetOutput());
+        printf("> Results: \n");
+        
+        /* Loop over each region in the map */
+        for(unsigned int i = 0; i < binaryImageToShapeLabelMapFilter->GetOutput()->GetNumberOfLabelObjects(); i++) {
+            // Get the ith region
+            BinaryImageToShapeLabelMapFilterType::OutputImageType::LabelObjectType* labelObject = binaryImageToShapeLabelMapFilter->GetOutput()->GetNthLabelObject(i);
+            
+            // Check if the object size matches any coin
+            char* objectType;
+            objectType = findCoinTypeLength(labelObject->GetBoundingBox().GetSize()[0]);
+            if(SHOW_ALL_OUTPUT) {
+                if(objectType == NULL) {
+                    objectType = (char*) "INDEFINIDO";
+                }
+                printf("   Object %10d - Length: %18ld - Type: %20s\n", i+1, labelObject->GetBoundingBox().GetSize()[0], objectType);
+            } else {
+                if(objectType != NULL) {
+                    printf("   Object %10d - Length: %18ld - Type: %20s\n", i+1, labelObject->GetBoundingBox().GetSize()[0], objectType);
+                }
+            }
+            
+            /*for(unsigned int r = 0; r < labelObject->GetBoundingBox().GetSize()[0]; r++){
+                for(unsigned int c = 0; c < labelObject->GetBoundingBox().GetSize()[1]; c++){
+                  ImageType::IndexType pixelIndex;
+                  pixelIndex[0] = labelObject->GetBoundingBox().GetIndex()[0] + r;
+                  pixelIndex[1] = labelObject->GetBoundingBox().GetIndex()[1] + c;
+
+                  image->SetPixel(pixelIndex, 0);
+                }
+            }*/
+        }
+    }
     
     //typedef  itk::ImageFileWriter< ImageType  > WriterType;
     //WriterType::Pointer writer = WriterType::New();
