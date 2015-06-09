@@ -13,6 +13,8 @@
 #include <iostream>
 #include <stdio.h>
 
+#define INFINI 100000000
+
 /* COIN LABELS */
 #define MOEDA_1_REAL        0
 #define MOEDA_50_CENT       1
@@ -32,9 +34,9 @@
 #define MOEDA_5_CENT_BRONZE_PIXEL   75000
 
 /* COIN LENGTH */
-#define MOEDA_1_REAL_LENGTH         390
+#define MOEDA_1_REAL_LENGTH         400
 #define MOEDA_50_CENT_LENGTH        340
-#define MOEDA_25_CENT_LENGTH        360
+#define MOEDA_25_CENT_LENGTH        380
 #define MOEDA_10_CENT_LENGTH        0
 #define MOEDA_10_CENT_GOLD_LENGTH   286
 #define MOEDA_5_CENT_LENGTH         0
@@ -134,7 +136,7 @@ BinaryImageToShapeLabelMapFilterType::Pointer getShapeLabelMap(ImageType::Pointe
     return binaryImageToShapeLabelMapFilter;
 }
 
-/* Comparison using an error margin */
+/* Comparison using an error margin. If is inside the margin return the difference, if not return INFINI.*/
 long int compare(long int size, long int compareValue){ 
     if(size < (compareValue + compareValue*MARGEM_ERRO) && size > (compareValue - compareValue*MARGEM_ERRO)) {
         long int diff = size - compareValue;
@@ -146,13 +148,13 @@ long int compare(long int size, long int compareValue){
         }
         return diff;
     } else {
-        return 100000000;
+        return INFINI;
     }
 }
   
 /* Compare a given pixel amount with the defined pixel amounts for each coin */
 char* findCoinTypeSize(long int size) {
-    long int closest = 100000000;
+    long int closest = INFINI;
     char* closest_string = NULL;
     if(compare(size, MOEDA_1_REAL_PIXEL) < closest) {
         closest = compare(size, MOEDA_1_REAL_PIXEL);
@@ -186,35 +188,35 @@ char* findCoinTypeSize(long int size) {
 }
 
 /* Compare a given length with the defined lengths for each coin */
-char* findCoinTypeLength(long int size) {
-    long int closest = 100000000;
+char* findCoinTypeLength(long int length) {
+    long int closest = INFINI;
     char* closest_string = NULL;
-    if(compare(size, MOEDA_1_REAL_LENGTH) < closest) {
-        closest = compare(size, MOEDA_1_REAL_LENGTH);
+    if(compare(length, MOEDA_1_REAL_LENGTH) < closest) {
+        closest = compare(length, MOEDA_1_REAL_LENGTH);
         closest_string = (char *) "1 REAL";
     }
-    if(compare(size, MOEDA_50_CENT_LENGTH) < closest) {
-        closest = compare(size, MOEDA_50_CENT_LENGTH);
+    if(compare(length, MOEDA_50_CENT_LENGTH) < closest) {
+        closest = compare(length, MOEDA_50_CENT_LENGTH);
         closest_string = (char *) "50 CENTAVOS";
     }
-    if(compare(size, MOEDA_25_CENT_LENGTH) < closest) {
-        closest = compare(size, MOEDA_25_CENT_LENGTH);
+    if(compare(length, MOEDA_25_CENT_LENGTH) < closest) {
+        closest = compare(length, MOEDA_25_CENT_LENGTH);
         closest_string = (char *) "25 CENTAVOS";
     }
-    if(compare(size, MOEDA_10_CENT_LENGTH) < closest) {
-        closest = compare(size, MOEDA_10_CENT_LENGTH);
+    if(compare(length, MOEDA_10_CENT_LENGTH) < closest) {
+        closest = compare(length, MOEDA_10_CENT_LENGTH);
         closest_string = (char *) "10 CENTAVOS";
     }
-    if(compare(size, MOEDA_10_CENT_GOLD_LENGTH) < closest) {
-        closest = compare(size, MOEDA_10_CENT_GOLD_LENGTH);
+    if(compare(length, MOEDA_10_CENT_GOLD_LENGTH) < closest) {
+        closest = compare(length, MOEDA_10_CENT_GOLD_LENGTH);
         closest_string = (char *) "10 CENTAVOS GOLD";
     }
-    if(compare(size, MOEDA_5_CENT_LENGTH) < closest) {
-        closest = compare(size, MOEDA_5_CENT_LENGTH);
+    if(compare(length, MOEDA_5_CENT_LENGTH) < closest) {
+        closest = compare(length, MOEDA_5_CENT_LENGTH);
         closest_string = (char *) "5 CENTAVOS";
     }
-    if(compare(size, MOEDA_5_CENT_BRONZE_LENGTH) < closest) {
-        closest = compare(size, MOEDA_5_CENT_BRONZE_LENGTH);
+    if(compare(length, MOEDA_5_CENT_BRONZE_LENGTH) < closest) {
+        closest = compare(length, MOEDA_5_CENT_BRONZE_LENGTH);
         closest_string = (char *) "5 CENTAVOS BRONZE";
     }
     return closest_string;
@@ -308,11 +310,11 @@ int main(int argc, char *argv[]){
         }
     }
     
-    //typedef  itk::ImageFileWriter< ImageType  > WriterType;
-    //WriterType::Pointer writer = WriterType::New();
-    //writer->SetFileName("output.png");
-    //writer->SetInput(image);
-    //writer->Update();
+    typedef  itk::ImageFileWriter< ImageType  > WriterType;
+    WriterType::Pointer writer = WriterType::New();
+    writer->SetFileName("output.png");
+    writer->SetInput(invertIntensityFilter->GetOutput());
+    writer->Update();
 
     return EXIT_SUCCESS;
 }   
