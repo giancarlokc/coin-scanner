@@ -36,7 +36,7 @@
 /* COIN LENGTH */
 #define MOEDA_1_REAL_LENGTH         400
 #define MOEDA_50_CENT_LENGTH        340
-#define MOEDA_25_CENT_LENGTH        380
+#define MOEDA_25_CENT_LENGTH        370
 #define MOEDA_10_CENT_LENGTH        0
 #define MOEDA_10_CENT_GOLD_LENGTH   286
 #define MOEDA_5_CENT_LENGTH         0
@@ -245,7 +245,7 @@ int main(int argc, char *argv[]){
     /* Invert image */
     InvertIntensityImageFilterType::Pointer invertIntensityFilter = invertImage(closingFilter->GetOutput(), 255);
 
-    // Shape Label Map filter
+    // Label Map filter
     if(USE_LABELMAP) {
         /* Apply an imagetoLabelMap filter to separate objects */
         BinaryImageToLabelMapFilterType::Pointer binaryImageToLabelMapFilter = getLabelMap(invertIntensityFilter->GetOutput());
@@ -286,33 +286,41 @@ int main(int argc, char *argv[]){
             
             // Check if the object size matches any coin
             char* objectType;
-            objectType = findCoinTypeLength(labelObject->GetBoundingBox().GetSize()[0]);
+            objectType = findCoinTypeLength((labelObject->GetBoundingBox().GetSize()[0]+labelObject->GetBoundingBox().GetSize()[1])/2);
             if(SHOW_ALL_OUTPUT) {
                 if(objectType == NULL) {
                     objectType = (char*) "INDEFINIDO";
                 }
-                printf("   Object %10d - Length: %18ld - Type: %20s\n", i+1, labelObject->GetBoundingBox().GetSize()[0], objectType);
+                printf("   Object %10d - Length: %18ld - Type: %20s\n", i+1, (labelObject->GetBoundingBox().GetSize()[0]+labelObject->GetBoundingBox().GetSize()[1])/2, objectType);
             } else {
                 if(objectType != NULL) {
-                    printf("   Object %10d - Length: %18ld - Type: %20s\n", i+1, labelObject->GetBoundingBox().GetSize()[0], objectType);
+                    printf("   Object %10d - Length: %18ld - Type: %20s\n", i+1, (labelObject->GetBoundingBox().GetSize()[0]+labelObject->GetBoundingBox().GetSize()[1])/2, objectType);
+
+                    for(unsigned int r = 0; r < labelObject->GetBoundingBox().GetSize()[0]; r++){
+                        for(unsigned int c = 0; c < labelObject->GetBoundingBox().GetSize()[1]; c++){
+                          ImageType::IndexType pixelIndex;
+                          pixelIndex[0] = labelObject->GetBoundingBox().GetIndex()[0] + r;
+                          pixelIndex[1] = labelObject->GetBoundingBox().GetIndex()[1] + c;
+
+                          if(!strcmp(objectType, "1 REAL")) {
+                            image->SetPixel(pixelIndex, 255);
+                          } else {
+                              image->SetPixel(pixelIndex, 0);
+                          }
+                        }
+                    }
                 }
             }
-            
-            /*for(unsigned int r = 0; r < labelObject->GetBoundingBox().GetSize()[0]; r++){
-                for(unsigned int c = 0; c < labelObject->GetBoundingBox().GetSize()[1]; c++){
-                  ImageType::IndexType pixelIndex;
-                  pixelIndex[0] = labelObject->GetBoundingBox().GetIndex()[0] + r;
-                  pixelIndex[1] = labelObject->GetBoundingBox().GetIndex()[1] + c;
-
-                  image->SetPixel(pixelIndex, 0);
-                }
-            }*/
         }
     }
     
     typedef  itk::ImageFileWriter< ImageType  > WriterType;
     WriterType::Pointer writer = WriterType::New();
     writer->SetFileName("output.png");
+    writer->SetInput(image);
+    writer->Update();
+
+    writer->SetFileName("outputThresh.png");
     writer->SetInput(invertIntensityFilter->GetOutput());
     writer->Update();
 
