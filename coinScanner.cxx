@@ -5,11 +5,16 @@
 #include "itkBinaryThresholdImageFilter.h"
 #include "itkImageFileReader.h"
 #include "itkBinaryCrossStructuringElement.h"
+#include "itkBinaryBallStructuringElement.h"
 #include "itkImageFileWriter.h"
 #include "itkImageRegionIterator.h"
 #include "itkBinaryImageToLabelMapFilter.h"
 #include "itkInvertIntensityImageFilter.h"
 #include "itkBinaryImageToShapeLabelMapFilter.h"
+#include <itkBinaryThresholdImageFilter.h>
+#include "itkImageRegionConstIterator.h"
+#include "itkImageRegionIterator.h"
+#include <itkRGBPixel.h>
 #include <iostream>
 #include <stdio.h>
 
@@ -36,7 +41,7 @@
 /* COIN LENGTH */
 #define MOEDA_1_REAL_LENGTH         400
 #define MOEDA_50_CENT_LENGTH        340
-#define MOEDA_25_CENT_LENGTH        370
+#define MOEDA_25_CENT_LENGTH        360
 #define MOEDA_10_CENT_LENGTH        0
 #define MOEDA_10_CENT_GOLD_LENGTH   286
 #define MOEDA_5_CENT_LENGTH         0
@@ -46,15 +51,20 @@
 #define MARGEM_ERRO 0.075
 
 /* OPTIONS */
-#define USE_LABELMAP 1
+#define USE_LABELMAP 0
 #define USE_SHAPELABELMAP 1
 #define SHOW_ALL_OUTPUT 0
 
 /* ITK Definitions */
+typedef itk::RGBPixel<unsigned char> RGBPixelType;
 typedef itk::Image<unsigned char, 2>  ImageType;
+typedef itk::Image<RGBPixelType> ImageColorType;
 typedef itk::ImageFileReader<ImageType> ReaderType;
+typedef itk::ImageFileReader<ImageColorType> ReaderColorType;
 typedef itk::BinaryThresholdImageFilter <ImageType, ImageType>  BinaryThresholdImageFilterType;
 typedef itk::BinaryCrossStructuringElement<ImageType::PixelType, ImageType::ImageDimension> StructuringElementType;
+typedef itk::BinaryBallStructuringElement<ImageType::PixelType, ImageType::ImageDimension> StructuringElementTypeBall;
+typedef itk::BinaryErodeImageFilter <ImageType, ImageType, StructuringElementType> BinaryErodeImageFilterType;
 typedef itk::BinaryMorphologicalClosingImageFilter <ImageType, ImageType, StructuringElementType> BinaryMorphologicalClosingImageFilterType;
 typedef itk::InvertIntensityImageFilter <ImageType> InvertIntensityImageFilterType;
 typedef itk::BinaryImageToLabelMapFilter<ImageType> BinaryImageToLabelMapFilterType;
@@ -66,6 +76,17 @@ typedef itk::BinaryImageToShapeLabelMapFilter<ImageType> BinaryImageToShapeLabel
 ReaderType::Pointer readFromFile(char* path) {
     printf("> Reading file: %s... ", path);
     ReaderType::Pointer reader = ReaderType::New();
+    reader->SetFileName(path);
+    reader->Update();
+    printf("[DONE]\n");
+    
+    return reader;
+}
+
+/* Create reader from file */
+ReaderColorType::Pointer readColorFromFile(char* path) {
+    printf("> Reading file: %s... ", path);
+    ReaderColorType::Pointer reader = ReaderColorType::New();
     reader->SetFileName(path);
     reader->Update();
     printf("[DONE]\n");
@@ -85,6 +106,23 @@ BinaryThresholdImageFilterType::Pointer applyThresholdFilter(ImageType::Pointer 
     printf("[DONE]\n");
     
     return thresholdFilter;
+}
+
+/* Binary erode filter */
+BinaryErodeImageFilterType::Pointer applyErodeFilter(ImageType::Pointer src, int radius) {
+    printf("> Applying Erode filter... ");
+    // Create structure
+    StructuringElementType structuringElement;
+    structuringElement.SetRadius(radius);
+    structuringElement.CreateStructuringElement();
+    // Run filter    
+    BinaryErodeImageFilterType::Pointer closingFilter  = BinaryErodeImageFilterType::New();
+    closingFilter->SetInput(src);
+    closingFilter->SetKernel(structuringElement);
+    closingFilter->Update();
+    printf("[DONE]\n");
+    
+    return closingFilter;
 }
 
 /* Binary morphological filter */
@@ -222,6 +260,48 @@ char* findCoinTypeLength(long int length) {
     return closest_string;
 }
 
+/* Color Scan */
+void colorScan(ImageColorType::Pointer image, unsigned int x, unsigned int y, unsigned int x_length, unsigned int y_length) {
+    //printf("   > Scanning object color pattern X=%d Y=%d X_LENGTH=%d Y_LENGTH=%d...", x, y, x_length, y_length);
+    int lineWidth = 9;
+    ImageColorType::SizeType regionSize;
+    regionSize[0] = x_length;
+    regionSize[1] = lineWidth;
+
+    ImageColorType::IndexType regionIndex;
+    regionIndex[0] = x;
+    regionIndex[1] = y + floor(y_length/2) - floor(lineWidth/2);
+
+    ImageColorType::RegionType region;
+    region.SetSize(regionSize);
+    region.SetIndex(regionIndex);
+
+    itk::ImageRegionIterator<ImageColorType> imageIterator(image,region);
+    //itk::ImageRegionConstIterator<ImageType> imageIterator(image,image->GetLargestPossibleRegion());
+
+    int r = 0;
+    int g = 0;
+    int b = 0;
+
+    while(!imageIterator.IsAtEnd()) {
+
+        itk::RGBPixel<unsigned char> pixelArray;
+        pixelArray = 1, 1, 1;
+        // Get the value of the current pixel
+        r += (int) imageIterator.Get()[0];
+        g += (int) imageIterator.Get()[1];
+        b += (int) imageIterator.Get()[2];
+        imageIterator.Set(pixelArray);
+
+        ++imageIterator;
+    }
+    r = floor(r / (x_length+1)) / lineWidth;
+    g = floor(g / (x_length+1)) / lineWidth;
+    b = floor(b / (x_length+1)) / lineWidth;
+    //printf("[DONE]\n");
+    printf("      Averages: R=%d G=%d B=%d\n", r, g, b);
+}
+
 /* @MAIN */
 int main(int argc, char *argv[]){
 
@@ -235,6 +315,11 @@ int main(int argc, char *argv[]){
     ReaderType::Pointer reader = readFromFile(argv[1]);
     
     ImageType::Pointer image = reader->GetOutput();
+
+    /* Read input file with colors */
+    ReaderColorType::Pointer readerColor = readColorFromFile(argv[1]);
+
+    ImageColorType::Pointer imageColor = readerColor->GetOutput();
  
     /* Use a threshold filter to create a binary image */
     BinaryThresholdImageFilterType::Pointer thresholdFilter  = applyThresholdFilter(reader->GetOutput(), 10, 100, 255, 0);
@@ -296,6 +381,8 @@ int main(int argc, char *argv[]){
                 if(objectType != NULL) {
                     printf("   Object %10d - Length: %18ld - Type: %20s\n", i+1, (labelObject->GetBoundingBox().GetSize()[0]+labelObject->GetBoundingBox().GetSize()[1])/2, objectType);
 
+                    colorScan(imageColor, labelObject->GetBoundingBox().GetIndex()[0], labelObject->GetBoundingBox().GetIndex()[1], labelObject->GetBoundingBox().GetSize()[0], labelObject->GetBoundingBox().GetSize()[0]);
+
                     for(unsigned int r = 0; r < labelObject->GetBoundingBox().GetSize()[0]; r++){
                         for(unsigned int c = 0; c < labelObject->GetBoundingBox().GetSize()[1]; c++){
                           ImageType::IndexType pixelIndex;
@@ -305,7 +392,7 @@ int main(int argc, char *argv[]){
                           if(!strcmp(objectType, "1 REAL")) {
                             image->SetPixel(pixelIndex, 255);
                           } else {
-                              image->SetPixel(pixelIndex, 0);
+                            image->SetPixel(pixelIndex, 0);
                           }
                         }
                     }
@@ -321,8 +408,14 @@ int main(int argc, char *argv[]){
     writer->Update();
 
     writer->SetFileName("outputThresh.png");
-    writer->SetInput(invertIntensityFilter->GetOutput());
+    writer->SetInput(closingFilter->GetOutput());
     writer->Update();
+
+    typedef  itk::ImageFileWriter< ImageColorType  > WriterColorType;
+    WriterColorType::Pointer writerColor = WriterColorType::New();
+    writerColor->SetFileName("outputColor.png");
+    writerColor->SetInput(imageColor);
+    writerColor->Update();
 
     return EXIT_SUCCESS;
 }   
