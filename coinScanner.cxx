@@ -265,12 +265,17 @@ void colorScan(ImageColorType::Pointer image, unsigned int x, unsigned int y, un
     //printf("   > Scanning object color pattern X=%d Y=%d X_LENGTH=%d Y_LENGTH=%d...", x, y, x_length, y_length);
     int lineWidth = 9;
     ImageColorType::SizeType regionSize;
-    regionSize[0] = x_length;
-    regionSize[1] = lineWidth;
+    //regionSize[0] = x_length;
+    //regionSize[1] = lineWidth;
+    regionSize[0] = lineWidth;
+    regionSize[1] = y_length;
 
     ImageColorType::IndexType regionIndex;
-    regionIndex[0] = x;
-    regionIndex[1] = y + floor(y_length/2) - floor(lineWidth/2);
+    //regionIndex[0] = x;
+    //regionIndex[1] = y + floor(y_length/2) - floor(lineWidth/2);
+
+    regionIndex[0] = x + floor(x_length/2) - floor(lineWidth/2);
+    regionIndex[1] = y;
 
     ImageColorType::RegionType region;
     region.SetSize(regionSize);
@@ -371,15 +376,25 @@ int main(int argc, char *argv[]){
             
             // Check if the object size matches any coin
             char* objectType;
-            objectType = findCoinTypeLength((labelObject->GetBoundingBox().GetSize()[0]+labelObject->GetBoundingBox().GetSize()[1])/2);
+            long max_size = labelObject->GetBoundingBox().GetSize()[0] > labelObject->GetBoundingBox().GetSize()[1] ? labelObject->GetBoundingBox().GetSize()[0] : labelObject->GetBoundingBox().GetSize()[1];
+            double diff;
+            if(labelObject->GetBoundingBox().GetSize()[0] > labelObject->GetBoundingBox().GetSize()[1]) {
+                diff = (double) labelObject->GetBoundingBox().GetSize()[1] / (double) labelObject->GetBoundingBox().GetSize()[0];
+            } else {
+                diff = (double) labelObject->GetBoundingBox().GetSize()[0] / (double) labelObject->GetBoundingBox().GetSize()[1];
+            }
+            objectType = findCoinTypeLength(max_size);
+            if(diff < 0.8) {
+                continue;
+            } 
             if(SHOW_ALL_OUTPUT) {
                 if(objectType == NULL) {
                     objectType = (char*) "INDEFINIDO";
                 }
-                printf("   Object %10d - Length: %18ld - Type: %20s\n", i+1, (labelObject->GetBoundingBox().GetSize()[0]+labelObject->GetBoundingBox().GetSize()[1])/2, objectType);
+                printf("   Object %10d - Length: %18ld - Type: %20s\n", i+1, max_size, objectType);
             } else {
                 if(objectType != NULL) {
-                    printf("   Object %10d - Length: %18ld - Type: %20s\n", i+1, (labelObject->GetBoundingBox().GetSize()[0]+labelObject->GetBoundingBox().GetSize()[1])/2, objectType);
+                    printf("   Object %10d - Length: %18ld - Type: %20s\n", i+1, max_size, objectType);
 
                     colorScan(imageColor, labelObject->GetBoundingBox().GetIndex()[0], labelObject->GetBoundingBox().GetIndex()[1], labelObject->GetBoundingBox().GetSize()[0], labelObject->GetBoundingBox().GetSize()[0]);
 

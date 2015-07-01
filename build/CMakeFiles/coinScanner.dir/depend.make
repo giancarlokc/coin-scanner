@@ -60,6 +60,8 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkArray.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkArray2D.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkArray2D.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBarrier.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryBallStructuringElement.h
+CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryBallStructuringElement.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryCrossStructuringElement.h
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryCrossStructuringElement.hxx
 CMakeFiles/coinScanner.dir/coinScanner.cxx.o: /usr/include/ITK-4.5/itkBinaryDilateImageFilter.h

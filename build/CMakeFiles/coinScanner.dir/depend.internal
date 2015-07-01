@@ -61,6 +61,8 @@ CMakeFiles/coinScanner.dir/coinScanner.cxx.o
  /usr/include/ITK-4.5/itkArray2D.h
  /usr/include/ITK-4.5/itkArray2D.hxx
  /usr/include/ITK-4.5/itkBarrier.h
+ /usr/include/ITK-4.5/itkBinaryBallStructuringElement.h
+ /usr/include/ITK-4.5/itkBinaryBallStructuringElement.hxx
  /usr/include/ITK-4.5/itkBinaryCrossStructuringElement.h
  /usr/include/ITK-4.5/itkBinaryCrossStructuringElement.hxx
  /usr/include/ITK-4.5/itkBinaryDilateImageFilter.h

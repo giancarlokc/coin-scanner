@@ -17,6 +17,8 @@ itkImageFileReader.h
 /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkImageFileReader.h
 itkBinaryCrossStructuringElement.h
 /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkBinaryCrossStructuringElement.h
+itkBinaryBallStructuringElement.h
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkBinaryBallStructuringElement.h
 itkImageFileWriter.h
 /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkImageFileWriter.h
 itkImageRegionIterator.h
@@ -27,6 +29,14 @@ itkInvertIntensityImageFilter.h
 /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkInvertIntensityImageFilter.h
 itkBinaryImageToShapeLabelMapFilter.h
 /home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkBinaryImageToShapeLabelMapFilter.h
+itkBinaryThresholdImageFilter.h
+-
+itkImageRegionConstIterator.h
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkImageRegionConstIterator.h
+itkImageRegionIterator.h
+/home/bcc/gkc11/Documentos/Semestre9/CI394-ProcessamentoImagens/coinScanner/itkImageRegionIterator.h
+itkRGBPixel.h
+-
 iostream
 -
 stdio.h
@@ -331,6 +341,18 @@ itkArray2D.h
 /usr/include/ITK-4.5/itkBarrier.h
 itkConditionVariable.h
 /usr/include/ITK-4.5/itkConditionVariable.h
+
+/usr/include/ITK-4.5/itkBinaryBallStructuringElement.h
+itkNeighborhood.h
+/usr/include/ITK-4.5/itkNeighborhood.h
+itkBinaryBallStructuringElement.hxx
+/usr/include/ITK-4.5/itkBinaryBallStructuringElement.hxx
+
+/usr/include/ITK-4.5/itkBinaryBallStructuringElement.hxx
+itkBinaryBallStructuringElement.h
+/usr/include/ITK-4.5/itkBinaryBallStructuringElement.h
+itkFlatStructuringElement.h
+/usr/include/ITK-4.5/itkFlatStructuringElement.h
 
 /usr/include/ITK-4.5/itkBinaryCrossStructuringElement.h
 itkNeighborhood.h
